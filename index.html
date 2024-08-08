@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body><h1>Hi</h1>
+<script type="module">
+    import {curriedAdd} from './curriedAdd.js';
+    import { curriedDomain } from './curriedDomain.js';
+    import { originalFunction } from './modifyFunction.js';
+    import { modifyFunction } from './modifyFunction.js';
+
+    console.log(curriedAdd(1)(2)(3));
+    console.log(curriedAdd(11)(12)(14));
+
+    const addFirst = curriedAdd(1);
+    const addSecond = addFirst(2);
+    const result = addSecond(3);
+    console.log('Result:', result);
+
+
+    const protocolSetter = curriedDomain('https');
+    const domainNameSetter = protocolSetter('example');
+    const fullDomain = domainNameSetter('com');
+    console.log('Full Domain:', fullDomain);
+
+    console.log(curriedDomain('http')('mywebsite')('com'));
+
+
+    console.log(originalFunction(2));
+    console.log(modifyFunction(16)(3));
+
+    console.log('Original function output for 4:', originalFunction(4))
+</script>
+
+</body>
+</html>
