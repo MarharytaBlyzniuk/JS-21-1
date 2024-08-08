@@ -32,9 +32,19 @@
 
 
     console.log(originalFunction(2));
-    console.log(modifyFunction(16)(3));
 
-    console.log('Original function output for 4:', originalFunction(4))
+    const modifiedFunction = modifyFunction(originalFunction, 3);
+    console.log(modifiedFunction(2));
+    console.log('Original function output for 4:', originalFunction(4));
+    console.log('Modified function output for 4:', modifiedFunction(4));
+
+
+
+    import { outerFunction } from './nestedFunctions.js';
+    const result1 = outerFunction(2)(3)(4);
+    console.log(result1);
+
+
 </script>
 
 </body>

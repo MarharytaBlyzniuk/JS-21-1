@@ -12,21 +12,26 @@
  і multiplier дорівнює 3, то повернута функція повинна повертати вхідний аргумент, помножений на 6.
 */
 
-
-function originalFunction(num) {
-    return num * 2;
+// Вища функція modifyFunction
+function modifyFunction(originalFunction, multiplier) {
+    return function(argument) {
+        return originalFunction(argument) * multiplier;
+    };
 }
-export { originalFunction };
 
-function modifyFunction(originalFunc, multiplier) {
- return function originalFunc(argument) {
-     return argument * multiplier;
- };
+function originalFunction(x) {
+    return x * 2;
 }
-export { modifyFunction };
+function squareFunction(x) {
+    return x * x;
+}
+console.log(squareFunction(4))
 
-console.log(modifyFunction(16)(3));
+const modifiedFunction = modifyFunction(originalFunction, 3);
+console.log(modifiedFunction(2));
 
+export { originalFunction};
+export {modifyFunction};
 // Приклад використання
 // const modifiedFunc = modifyFunction(originalFunction, 3)
 // console.log('Original function output for 4:', originalFunction(4)) // Повинно вивести 16
